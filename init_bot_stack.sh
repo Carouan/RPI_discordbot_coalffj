@@ -5,7 +5,7 @@ set -e
 sudo apt update && sudo apt install -y docker.io docker-compose git
 
 # Clonage du projet
-REPO_URL="https://github.com/seb-baudoux/discord-bot.git"
+REPO_URL="https://github.com/Carouan/RPI_discordbot_coalffj.git"
 TARGET_DIR="discord-bot"
 
 if [ ! -d "$TARGET_DIR" ]; then
