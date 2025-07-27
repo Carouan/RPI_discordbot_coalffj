@@ -1,0 +1,18 @@
+pipeline:
+  test:
+    image: python:3.9
+    commands:
+      - pip install -r requirements.txt
+      - python -m unittest discover
+  deploy:
+    image: docker:cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker compose down
+      - docker compose build
+      - docker compose up -d
+
+when:
+  event:
+    - push
