@@ -26,3 +26,18 @@ Bot discord qui résume les nouveau message du serveur Coalition FFJ et les envo
 │   ├─ daily_summary.txt				(daily report)
 │   └─ weekly_summary.txt				(weekly report)
 
+
+## Configuration des variables d'environnement
+
+Copiez le fichier `.env.example` fourni à la racine du projet puis renommez-le en `.env` :
+
+```bash
+cp .env.example .env
+```
+
+Remplissez ensuite les valeurs requises :
+- `DISCORD_TOKEN` : le token de votre bot Discord
+- `EMAIL_ADDRESS` et `EMAIL_PASSWORD` : identifiants du compte qui enverra les résumés
+- `RECIPIENT_EMAIL` : destinataire principal
+- `TEST_RECIPIENT_EMAIL` : adresse de test pour les commandes de vérification
+
