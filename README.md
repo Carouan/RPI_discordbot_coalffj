@@ -1,4 +1,22 @@
 
+codex/create-.env.example-documentation
+
+## Configuration des variables d'environnement
+
+Copiez le fichier `.env.example` fourni à la racine du projet puis renommez-le en `.env` :
+
+```bash
+cp .env.example .env
+```
+
+Remplissez ensuite les valeurs requises :
+- `DISCORD_TOKEN` : le token de votre bot Discord
+- `EMAIL_ADDRESS` et `EMAIL_PASSWORD` : identifiants du compte qui enverra les résumés
+- `RECIPIENT_EMAIL` : destinataire principal
+- `TEST_RECIPIENT_EMAIL` : adresse de test pour les commandes de vérification
+
+=======
+
 
 # RPI_discordbot_coalffj
 Bot discord qui résume les nouveau message du serveur Coalition FFJ et les envois par mail sur coalition_ffj@femmesdedroit.be (mailing list)
@@ -38,3 +56,4 @@ chmod +x init_bot_stack.sh
 ```
 
 Le script installe Docker et docker-compose, clone ce dépôt puis démarre la stack Docker.
+
