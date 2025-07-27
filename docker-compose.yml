@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  bot:
+    build: ./bot
+    env_file: ./bot/.env
+    restart: always
+
+  gitea:
+    image: gitea/gitea:latest
+    volumes:
+      - ./data/gitea:/data
+    ports:
+      - "3000:3000"
+      - "222:22"
+    restart: always
+
+  woodpecker-server:
+    image: woodpeckerci/woodpecker-server:latest
+    environment:
+      - WOODPECKER_OPEN=true
+      - WOODPECKER_GITEA=true
+      - WOODPECKER_GITEA_URL=http://gitea:3000
+      - WOODPECKER_GITEA_CLIENT=xxx
+      - WOODPECKER_GITEA_SECRET=yyy
+    volumes:
+      - ./data/woodpecker:/var/lib/woodpecker
+    ports:
+      - "8000:8000"
+    restart: always
+
+  woodpecker-agent:
+    image: woodpeckerci/woodpecker-agent:latest
+    environment:
+      - WOODPECKER_SERVER=woodpecker-server:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./monitoring/uptime-kuma:/app/data
+    restart: always
