@@ -183,3 +183,7 @@ def naive_summarize(text, max_sentences=3, max_length=250):
     if len(sentences) > max_sentences:
         extracted += " (résumé...)"
     return extracted
+
+def summarize_message(text, max_sentences=3, max_length=250):
+    """Wrapper around :func:`naive_summarize` for backward compatibility."""
+    return naive_summarize(text, max_sentences=max_sentences, max_length=max_length)
